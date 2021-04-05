@@ -3,15 +3,14 @@
 
 
 const mongoose = require("mongoose");
+require("dotenv").config();
 
-const URI = 
-"mongodb+srv://glonaa:137125Gg@cluster0.tot2b.mongodb.net/glodb?retryWrites=true&w=majority";
 
 const connection = async () => {
 try{
-    await mongoose.connect(URI, { 
+    await mongoose.connect(process.env.MONGO_URI, { 
         useUnifiedTopology: true,
-    useNewUrlParser: true,
+        useNewUrlParser: true,
 });
     console.log("successfully connected to glonadb");
 } catch (error) {
